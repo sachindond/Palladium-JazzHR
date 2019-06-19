@@ -21,6 +21,10 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>BatchUpdateJazzHRJobApplication</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>GetApplicantDetailController</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -34,6 +38,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>JazzHRCallouts</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>JazzHRFetchDeletedApplicantController</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -65,7 +73,15 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>ScheduleBatchApplicantCompleteDetails</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>ScheduleBatchDeleteJobApplications</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>ScheduleBatchUpdateJazzHRJobApplication</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -81,15 +97,7 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>TestBatchLinkEnquiryToApplicants</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
         <apexClass>TestBatchSyncApplicantCompleteDetails</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>TestBatchSyncUsersFromJazzHR</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -101,11 +109,23 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>TestJazzHRFetchDeletedApplicant</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>TestJazzHRMergeApplicantController</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>TestScheduleBatchApplicantDetails</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>TestScheduleBatchDeleteJobApplications</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TestScheduleBatchUpdateJobApplication</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -118,11 +138,6 @@
     </classAccesses>
     <description>This Permission Set Contains Object Access Of All Objects Included In JazzHR- SFDC Integration
 1. Applicant__c 2. Job_Listing__c etc.</description>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Account.Employer_Code__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>Applicant__c.Address__c</field>
@@ -479,9 +494,9 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>Job_Application__c.Last_Synced_At__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -501,7 +516,7 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Job_Application__c.Reporting_Stage__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -629,46 +644,6 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
-        <field>Lead.BASE_Currently_Employed__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Lead.BASE_Local_Ward__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Lead.BASE_Require_visa_work_permit__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Lead.Date_Enquiry_Received__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Lead.Date_received__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Lead.Gender__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Lead.Lead_ID__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Lead.Nationality__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>true</editable>
         <field>Log_Entry__c.Function__c</field>
         <readable>true</readable>
@@ -768,8 +743,4 @@
         <object>Questionnaire__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
-    <pageAccesses>
-        <apexPage>GetApplicantDetails</apexPage>
-        <enabled>true</enabled>
-    </pageAccesses>
 </PermissionSet>

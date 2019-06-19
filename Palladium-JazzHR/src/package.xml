@@ -1,120 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-    <types>
-       
-        <members>BatchSyncApplicantsFromJazzHR</members>
-        <members>BatchSyncJobsFromJazzHR</members>
-        <members>BatchSyncUsersFromJazzHR</members>
-        <members>GetApplicantDetailController</members>
-        <members>HttpMockGenerator</members>
-        <members>JazzHRApplicantJourneyController</members>
-        <members>JazzHRCallouts</members>
-        <members>JazzHRMergeApplicantRecordsController</members>
-        <members>JazzHRMigrationActivityCalls</members>
-        <members>JazzHRSFDCUtils</members>
-        <members>JazzHRSingleApplicantWrapper</members>
-        <members>JazzHRTestDataHandler</members>
-        <members>JazzHRWrapper</members>
-        <members>Logger</members>
-        <members>ScheduleJazzHRBatches</members>
-        <members>SyncApplicantFromJazzHRClassic</members>
-        <members>TestBatchLinkEnquiryToApplicants</members>
-        <members>TestBatchSyncUsersFromJazzHR</members>
-        <members>TestGetApplicationDetailController</members>
-        <members>TestJazzHRApplicantJourneyController</members>
-        <members>TestJazzHRMergeApplicantController</members>
-        <members>TestScheduleJazzHRBatches</members>
-        <members>TestSyncApplicantFromJazzHRClassic</members>
-        <members>BatchDeleteJobApplications</members>
-        <members>ScheduleBatchDeleteJobApplications</members>
-       <members>TestBatchDeleteJobApplications</members>
-        <members>TestScheduleBatchDeleteJobApplications</members>
-         <members>BatchSyncApplicantCompleteDetails</members>
-          <members>TestBatchSyncApplicantCompleteDetails</members>
-        <name>ApexClass</name>
-    </types>
-    <types>
-        <members>Applicant_Record_Page</members>
-        <members>GetApplicantDetails</members>
-        <members>Job_Application_Record_Page</members>
-        <members>Job_Listing_Record_Page</members>
-        <name>ApexPage</name>
-    </types>
-    
-    <types>
-    <members>Job_Application__c-Job Application Layout</members>
-       <members>Applicant__c-Applicant Layout</members>
-<members>Job_Listing__c-Job Listing Layout</members>
-<members>Questionnaire__c-Questionnaire Layout</members>
-<members>Log_Entry__c-Log Entry Layout</members>
-<members>JazzHR_Unresolved_Item__c-JazzHR Unresolved Item Layout</members>
-    	<name>Layout</name>
-    </types>
-    
-    <types>
-        <members>*</members>
-        <name>AuraDefinitionBundle</name>
-    </types>
-    <types>
-        <members> Lead.Lead_ID__c</members>
-         <members> Lead.Company</members>
-        <members> Lead.Nationality__c </members>
-        <members>Account.Employer_Code__c</members>
-        <members>Lead.BASE_Currently_Employed__c </members>
-        <members>Lead.BASE_Local_Ward__c</members>
-        <members>Lead.BASE_Require_visa_work_permit__c  </members>
-        <members>Lead.Date_Enquiry_Received__c</members>
-        <members>Lead.Date_received__c</members>
-        <members>Lead.Gender__c</members>
-        <members>Job_Application__c.Last_Synced_At__c</members>
-        <members>Applicant__c.Deleted_Applicant_Ids__c</members>
-        <name>CustomField</name>
-    </types>
-    <types>
-        <members>Applicant__c</members>
-        <members>JazzHR_Setting__c</members>
-        <members>JazzHR_Unresolved_Item__c</members>
-        <members>JazzHR_User__c</members>
-        <members>Job_Application__c</members>
-        <members>Job_Listing__c</members>
-        <members>Log_Entry__c</members>
-        <members>Questionnaire__c</members>
-        <name>CustomObject</name>
-    </types>
-    <types>
-        <members>JazzHR_Dashboards</members>
-        <members>JazzHR_Dashboards/qftsSHHxzgzRJgPXroUFudvaTbyRoM</members>
-        <name>Dashboard</name>
-    </types>
-    <types>
-        <members>Applicant_Record_Page</members>
-        <members>Job_Application_Record_Page</members>
-        <members>Job_Listing_Record_Page</members>
-        <name>FlexiPage</name>
-    </types>
-    <types>
-        <members>JazzHR_SFDC_User</members>
-        <name>PermissionSet</name>
-    </types>
-    <types>
-        <members>JazzHR_Reports/Applicant_Report_wGq</members>
-        <members>JazzHR_Reports/Applicants_With_Related_Leads_dMb</members>
-        <members>JazzHR_Reports/JazzHR_Users_Report_1ep</members>
-        <members>JazzHR_Reports/Job_Listings_Report_yL4</members>
-        
-        <members>JazzHR_Reports/Todays_Applicants_Mmv</members>
-        <name>Report</name>
-    </types>
-    
-    <types>
-        <members>Applicant__c.Sync_Details_From_JazzHR</members>
-        <name>QuickAction</name>
-    </types>
-   
-    
-    <types>
-        <members>Loader</members>
-        <name>StaticResource</name>
-    </types>
-    <version>37.0</version>
+	<types>
+
+		<members>BatchSyncApplicantsFromJazzHR</members>
+		<members>BatchSyncJobsFromJazzHR</members>
+		<members>BatchSyncUsersFromJazzHR</members>
+		<members>BatchDeleteJobApplications</members>
+		<members>BatchSyncApplicantCompleteDetails</members>
+		<members>BatchUpdateJazzHRJobApplication</members>
+		<members>ScheduleJazzHRBatches</members>
+		<members>ScheduleBatchDeleteJobApplications</members>
+		<members>ScheduleBatchUpdateJazzHRJobApplication</members>
+		<members>ScheduleBatchApplicantCompleteDetails</members>
+		<members>GetApplicantDetailController</members>
+		<members>HttpMockGenerator</members>
+		<members>JazzHRApplicantJourneyController</members>
+		<members>JazzHRCallouts</members>
+		<members>JazzHRMergeApplicantRecordsController</members>
+		<members>JazzHRMigrationActivityCalls</members>
+		<members>JazzHRSFDCUtils</members>
+		<members>JazzHRSingleApplicantWrapper</members>
+		<members>JazzHRTestDataHandler</members>
+		<members>JazzHRWrapper</members>
+		<members>Logger</members>
+		<members>SyncApplicantFromJazzHRClassic</members>
+		<members>JazzHRFetchDeletedApplicantController</members>
+		<members>TestBatchSyncApplicantCompleteDetails</members>
+		<members>TestBatchDeleteJobApplications</members>
+		<members>TestScheduleBatchDeleteJobApplications</members>
+		<members>TestScheduleBatchUpdateJobApplication</members>
+		<members>TestScheduleBatchApplicantDetails</members>
+		<members>TestJazzHRFetchDeletedApplicant</members>		
+		<members>TestGetApplicationDetailController</members>
+		<members>TestJazzHRApplicantJourneyController</members>
+		<members>TestJazzHRMergeApplicantController</members>
+		<members>TestScheduleJazzHRBatches</members>
+		<members>TestSyncApplicantFromJazzHRClassic</members>
+		<name>ApexClass</name>
+	</types>
+	<types>
+		<members>Applicant__c</members>
+		<members>JazzHR_Setting__c</members>
+		<members>JazzHR_Unresolved_Item__c</members>
+		<members>JazzHR_User__c</members>
+		<members>Job_Application__c</members>
+		<members>Job_Listing__c</members>
+		<members>Log_Entry__c</members>
+		<members>Questionnaire__c</members>
+		<name>CustomObject</name>
+	</types>
+	<types>
+		<members>JazzHR_Dashboards</members>
+		<members>JazzHR_Dashboards/qftsSHHxzgzRJgPXroUFudvaTbyRoM1</members>
+		<name>Dashboard</name>
+	</types>
+	<types>
+		<members>JazzHR_SFDC_User</members>
+		<name>PermissionSet</name>
+	</types>
+	<types>
+		<members>JazzHR_Reports/Applicant_Report_wGq</members>
+		<members>JazzHR_Reports/Applicants_With_Related_Leads_dMb</members>
+		<members>JazzHR_Reports/JazzHR_Users_Report_1ep</members>
+		<members>JazzHR_Reports/Job_Listings_Report_yL4</members>
+		<members>JazzHR_Reports/Todays_Applicants_Mmv</members>
+		<members>BASE_Reports_by_ZMM/Accounts_With_Job_Listings_G0m</members>
+		<name>Report</name>
+	</types>
+	<types>
+		<members>Applicant__c.Sync_Details_From_JazzHR</members>
+		<name>QuickAction</name>
+	</types>
+	<types>
+		<members>Loader</members>
+		<name>StaticResource</name>
+	</types>
+	<types>
+		<members>Job_Application__c-Job Application Layout</members>
+		<members>Applicant__c-Applicant Layout</members>
+		<members>Job_Listing__c-Job Listing Layout</members>
+		<members>Questionnaire__c-Questionnaire Layout</members>
+		<members>Log_Entry__c-Log Entry Layout</members>
+		<members>JazzHR_Unresolved_Item__c-JazzHR Unresolved Item Layout</members>
+	<name>Layout</name>
+	</types>
+	
+	<types>
+	<members>*</members>
+	<name>AuraDefinitionBundle</name>
+	</types>
+	<types>
+	<members>Applicant_Record_Page</members>
+	<members>Job_Application_Record_Page</members>
+	<members>Job_Listing_Record_Page</members>
+	<name>FlexiPage</name>
+	</types>
+	<version>37.0</version>
 </Package>

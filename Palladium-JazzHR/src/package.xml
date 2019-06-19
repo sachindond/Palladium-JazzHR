@@ -50,6 +50,7 @@
 <members>JazzHR_Unresolved_Item__c-JazzHR Unresolved Item Layout</members>
     	<name>Layout</name>
     </types>
+    
     <types>
         <members>*</members>
         <name>AuraDefinitionBundle</name>

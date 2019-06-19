@@ -105,6 +105,13 @@
         <members>JazzHR_Reports/Todays_Applicants_Mmv</members>
         <name>Report</name>
     </types>
+    
+    <types>
+        <members>Applicant__c.Sync_Details_From_JazzHR</members>
+        <name>QuickAction</name>
+    </types>
+   
+    
     <types>
         <members>Loader</members>
         <name>StaticResource</name>

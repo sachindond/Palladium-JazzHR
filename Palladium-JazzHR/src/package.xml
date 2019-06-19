@@ -29,6 +29,8 @@
         <members>ScheduleBatchDeleteJobApplications</members>
        <members>TestBatchDeleteJobApplications</members>
         <members>TestScheduleBatchDeleteJobApplications</members>
+         <members>BatchSyncApplicantCompleteDetails</members>
+          <members>TestBatchSyncApplicantCompleteDetails</members>
         <name>ApexClass</name>
     </types>
     <types>
@@ -37,6 +39,16 @@
         <members>Job_Application_Record_Page</members>
         <members>Job_Listing_Record_Page</members>
         <name>ApexPage</name>
+    </types>
+    
+    <types>
+    <members>Job_Application__c-Job Application Layout</members>
+       <members>Applicant__c-Applicant Layout</members>
+<members>Job_Listing__c-Job Listing Layout</members>
+<members>Questionnaire__c-Questionnaire Layout</members>
+<members>Log_Entry__c-Log Entry Layout</members>
+<members>JazzHR_Unresolved_Item__c-JazzHR Unresolved Item Layout</members>
+    	<name>Layout</name>
     </types>
     <types>
         <members>*</members>
@@ -53,6 +65,8 @@
         <members>Lead.Date_Enquiry_Received__c</members>
         <members>Lead.Date_received__c</members>
         <members>Lead.Gender__c</members>
+        <members>Job_Application__c.Last_Synced_At__c</members>
+        <members>Applicant__c.Deleted_Applicant_Ids__c</members>
         <name>CustomField</name>
     </types>
     <types>

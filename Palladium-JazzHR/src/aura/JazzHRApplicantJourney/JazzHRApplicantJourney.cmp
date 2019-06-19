@@ -1,0 +1,242 @@
+<aura:component implements="force:appHostable,force:hasRecordId" access="global" controller="JazzHRApplicantJourneyController">
+    <aura:attribute name="selectedLookUpRecord" type="sObject" default="{}"/>
+    <aura:attribute name="ApplicantDetails" type="Object" />
+    <aura:attribute name="objectLength" type="integer" />
+    <aura:handler name="oSelectedRecordEvent" event="c:SelectedApplicantRecord" action="{!c.handleComponentEvent}"/>
+    <!-- *** below two attribute for Lightning data table ***** -->
+    <aura:attribute name="data" type="Object"/>
+    <aura:attribute name="columns" type="List"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    
+    
+    <div class="slds-page-header">
+        <div class="slds-page-header__row">
+            <div class="slds-page-header__col-title">
+                <div class="slds-media">
+                    <div class="slds-media__figure">
+                        <span class="slds-icon_container slds-icon-standard-Applicant" title="Applicant Journey">
+                            <lightning:icon iconName="custom:custom15" alternativeText="Applicant journey" />
+                            
+                            <span class="slds-assistive-text">Applicant Journey</span>
+                        </span>
+                        
+                    </div>
+                    <div class="slds-media__body">
+                        <div class="slds-page-header__name">
+                            <div class="slds-page-header__name-title">
+                                <h1>
+                                    <span class="slds-page-header__title slds-truncate" title="Applicant journey">Applicant Journey</span>
+                                </h1>
+                            </div>
+                        </div>
+                        
+                        <p class="slds-page-header__name-meta">Consolidated View Of An Applicant</p>
+                        
+                        
+                        <div style='width:200px;  margin-left: 300px; margin-top:-45px;'>
+                            <lightning:select aura:id="select" name="select" label="Select Correct Option" onchange="{!c.onApplicantOptionChange }">
+                                <option value="showExisting">Show Existing Applicant</option>
+                                <option value="fetchDeleted">Fetch Deleted Applicant</option>
+                            </lightning:select>
+                        </div>
+                        
+                        <div style='width:400px; margin-left:550px; margin-top:-58px;'>
+                            <c:JazzHRCustomLookup objectAPIName="Applicant__c" IconName="custom:custom15" selectedRecord="{!v.selectedLookUpRecord}" label="Search Applicant"/>
+                        </div>    
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  
+    <div>
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+           
+            <tbody>
+                <tr class="slds-hint-parent">
+                    <td  class="tdWidth"><b>Name</b></td>
+                    <td  class="tdWidth"><a href="{!'/one/one.app?#/sObject/'+ v.selectedLookUpRecord.Id + '/view'}" target="_blank">{!v.selectedLookUpRecord.First_Name__c}&nbsp;{!v.selectedLookUpRecord.Last_Name__c}</a></td>
+                    <td  class="tdWidth"><b>Location</b></td>
+                    <td  class="tdWidth">{!v.selectedLookUpRecord.Location__c}</td>
+                </tr>
+                <tr class="slds-hint-parent">
+                    <td  class="tdWidth"><b>Email</b></td>
+                    <td  class="tdWidth">{!v.selectedLookUpRecord.Email__c}</td>
+                    <td  class="tdWidth"><b>Phone</b></td>
+                    <td  class="tdWidth">{!v.selectedLookUpRecord.Phone__c}</td>
+                </tr>
+                <tr class="slds-hint-parent">
+                    <td  class="tdWidth"><b>Source</b></td>
+                    <td  class="tdWidth">{!v.selectedLookUpRecord.Source__c}</td>
+                    <td><b>Postal Code</b></td>
+                    <td>{!v.selectedLookUpRecord.Postal_Code__c}</td>
+                </tr>
+                <tr class="slds-hint-parent">
+                    <td  class="tdWidth"><b>Is Synced?</b></td>
+                    <td  class="tdWidth">{!v.selectedLookUpRecord.Is_Synced__c}</td>
+                    <td><b>Last Sync Date Time</b></td>
+                    <td>
+                    <lightning:formattedDateTime value="{!v.selectedLookUpRecord.Last_Sync_Date_Time__c}" year="numeric" month="numeric" day="numeric" hour="2-digit"
+                                 minute="2-digit" timeZone="UTC" timeZoneName="short" hour12="false"/>
+                    </td>
+                </tr>                
+            </tbody>
+        </table>
+    </div>
+    <!-- *** Job Applicant Expandable Section **** -->
+    <div class="slds-page-header" style="cursor: pointer;" onclick="{!c.expandJobApplicantionSection}">
+        <section class="slds-clearfix">
+            <div class="slds-float--left ">
+                <lightning:icon class="slds-show" aura:id="expanJobApplicationId" iconName="utility:chevronright" size="x-small" alternativeText="Indicates add"/>
+                <lightning:icon class="slds-hide" aura:id="expanJobApplicationId" iconName="utility:chevrondown" size="x-small" alternativeText="Indicates dash"/>
+            </div>
+            <div class="slds-m-left--large">Job Applications</div>
+        </section>
+    </div>
+    
+    <div class="slds-hide " aura:id="expanJobApplicationId">
+        <aura:if isTrue="{!or(v.ApplicantDetails.Job_Applications__r ==null,v.selectedLookUpRecord.Id==null)}">
+            <div style="background:white;text-align:center;height:20px;">
+                <p style="color:red;"> No Job Applications Found </p> 
+            </div>
+            <aura:set attribute="else">
+                <div>
+                    <table class="slds-table slds-table--bordered ">
+                        <thead>
+                            <tr>
+                                <th scope="col"><span class="slds-truncate">Job Application ID</span></th>
+                                <th scope="col"><span class="slds-truncate">Job Listing ID</span></th>
+                                <th scope="col"><span class="slds-truncate">Job Title</span></th>
+                                <th scope="col"><span class="slds-truncate">Applicant Progress</span></th>
+                                <th scope="col"><span class="slds-truncate">Outcome Type</span></th>
+                                <th scope="col"><span class="slds-truncate">Job Start Date</span></th>
+                                <th scope="col"><span class="slds-truncate">Job End Date</span></th>
+                            </tr>
+                        </thead>
+                        
+                        <tbody>
+                            <aura:iteration items="{!v.ApplicantDetails.Job_Applications__r}" var="jobapplication">
+                                <tr>
+                                    <td><a href="{!'/one/one.app?#/sObject/'+ jobapplication.Id + '/view'}" target="_blank">{!jobapplication.Name}</a></td>
+                                    <td><a href="{!'/one/one.app?#/sObject/'+ jobapplication.Job_Listing__c + '/view'}" target="_blank">{!jobapplication.Job_Listing__r.Name}</a></td>
+                                    <td>{!jobapplication.Job_Listing__r.Title__c}</td>
+                                    <td>{!jobapplication.Applicant_Progress__c}</td>
+                                    <td>{!jobapplication.Outcome_Type__c}</td>
+                                    <td>{!jobapplication.Job_Start_Date__c}</td>
+                                    <td>{!jobapplication.Job_End_Date__c}</td>
+                                </tr>
+                            </aura:iteration>
+                        </tbody>
+                    </table>
+                </div>
+            </aura:set>
+        </aura:if>
+    </div>
+    
+    <!-- *** Questionarrie Expandable Section **** -->
+    <div class="slds-page-header" style="cursor: pointer;" onclick="{!c.expandQuestionSection}">
+        <section class="slds-clearfix">
+            <div class="slds-float--left ">
+                <lightning:icon class="slds-show" aura:id="expandQuestionSectionId" iconName="utility:chevronright" size="x-small" alternativeText="Indicates add"/>
+                <lightning:icon class="slds-hide" aura:id="expandQuestionSectionId" iconName="utility:chevrondown" size="x-small" alternativeText="Indicates dash"/>
+            </div>
+            <div class="slds-m-left--large">Questionnaire</div>
+        </section>
+    </div>
+    
+    <div class="slds-hide " aura:id="expandQuestionSectionId">
+        <aura:if isTrue="{!or(v.ApplicantDetails.Questionnaire__r ==null,v.selectedLookUpRecord.Id==null)}">
+            <div style="background:white;text-align:center;height:20px;">
+                <p style="color:red;">No Questionnaires Found</p> 
+            </div>
+            <aura:set attribute="else">
+                <div>
+                    <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                        <thead>
+                            <tr class="slds-line-height_reset">
+                                <th class="slds-cell-wrap" scope="col">
+                                    <div class="slds-truncate" title="Questionnarie Id">Questionnaire ID</div>
+                                </th>
+                                <th class="slds-cell-wrap" scope="col">
+                                    <div class="slds-truncate" title="Question">Question</div>
+                                </th>
+                                <th class="slds-cell-wrap" scope="col">
+                                    <div class="slds-truncate" title="Answer">Answer</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <aura:iteration items="{!v.ApplicantDetails.Questionnaire__r}" var="question">
+                                <tr class="slds-hint-parent">
+                                    <th data-label="Questionnarie Id" scope="row" style="width:20%;" >
+                                        <div style="width:20%;" title="Questionnarie Id"><a href="{!'/one/one.app?#/sObject/'+ question.Id + '/view'}" target="_blank">{!question.Name}</a></div>
+                                    </th>
+                                    <td data-label="Question" style="width:60%;">
+                                        <div aria-label="" class=" slds-grow slds-cell-wrap" title="Question">{!question.Question__c}</div>
+                                    </td>
+                                    <td data-label="Answer"  style="width:40%;">
+                                        <div   title="Answer">{!question.Answer__c}</div>
+                                    </td>                                    
+                                </tr>
+                            </aura:iteration>
+                        </tbody>
+                    </table>    
+                </div>
+            </aura:set>
+        </aura:if>
+    </div>    
+ 
+        <!-- *** Enquiry Expandable Section **** -->
+    <div class="slds-page-header" style="cursor: pointer;" onclick="{!c.expandEnquirySection}">
+        <section class="slds-clearfix">
+            <div class="slds-float--left ">
+                <lightning:icon class="slds-show" aura:id="expandEnquirySectionId" iconName="utility:chevronright" size="x-small" alternativeText="Indicates add"/>
+                <lightning:icon class="slds-hide" aura:id="expandEnquirySectionId" iconName="utility:chevrondown" size="x-small" alternativeText="Indicates dash"/>
+            </div>
+            <div class="slds-m-left--large">Enquiry/Talent Pool</div>
+        </section>
+    </div>
+    
+    <div class="slds-hide " aura:id="expandEnquirySectionId">
+        <aura:if isTrue="{!or(v.ApplicantDetails.Enquiry__r ==null,v.selectedLookUpRecord.Id==null)}">
+            <div style="background:white;text-align:center;height:20px;">
+                <p style="color:red;"> No Enquiry Found</p> 
+            </div>
+            <aura:set attribute="else">
+                <div>
+                    <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                          <tbody>
+                           	<tr class="slds-hint-parent">
+                                    <td  class="tdWidth"><b>Name</b></td>
+                                    <td  class="tdWidth"><a href="{!'/one/one.app?#/sObject/'+ v.ApplicantDetails.Enquiry__r.Id + '/view'}" target="_blank">{!v.ApplicantDetails.Enquiry__r.Name}</a></td>
+                                    <td  class="tdWidth"><b>Date Received</b></td>
+                                    <td  class="tdWidth"><ui:outputDate aura:id="oDate" format="DD/MM/YYYY" value="{!v.ApplicantDetails.Enquiry__r.Date_received__c}" /></td>
+                                </tr>
+                                <tr class="slds-hint-parent">
+                                    <td  class="tdWidth"><b>Gender</b></td>
+                                    <td  class="tdWidth">{!v.ApplicantDetails.Enquiry__r.Gender__c}</td>
+                                    <td  class="tdWidth"><b>BASE Local Ward</b></td>
+                                    <td  class="tdWidth">{!v.ApplicantDetails.Enquiry__r.BASE_Local_Ward__c}</td>
+                                </tr>
+                                <tr class="slds-hint-parent">
+                                    <td  class="tdWidth"><b>Nationality</b></td>
+                                    <td  class="tdWidth">{!v.ApplicantDetails.Enquiry__r.Nationality__c}</td>
+                                    <td  class="tdWidth"><b>Visa Required</b></td>
+                                    <td  class="tdWidth">{!v.ApplicantDetails.Enquiry__r.BASE_Require_visa_work_permit__c}</td>
+                                </tr>
+                                <tr class="slds-hint-parent">
+                                    <td  class="tdWidth"><b>Employed?</b></td>
+                                    <td  class="tdWidth">{!v.ApplicantDetails.Enquiry__r.BASE_Currently_Employed__c}</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                          
+                        </tbody>
+                    </table>    
+                </div>
+            </aura:set>
+        </aura:if>
+    </div> 
+</aura:component>

@@ -1,0 +1,189 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" 
+                access="global" controller="JazzHRMergeApplicantRecordsController">
+    
+    <aura:attribute name="lstApplicant" type="list"/>
+    <aura:attribute name="lstApplicantMatchingApplicant" type="list"/>
+    <aura:attribute name="recordId" type='string'/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="isOpen" type="boolean" default="false"/>
+    <!--currentStep attribute will control the steps of progress indicator-->
+    <aura:attribute name="currentStep" type="string" default="1"/>
+    <aura:attribute name="selectedRecord" type="object" />
+    <aura:attribute name="progress" type="Integer" default="0"/>
+    <aura:attribute name="isRecordSelected" type="boolean" default="false"/>
+    <lightning:card variant="Narrow" title="Manage Duplicate Applicants" iconName="standard:branch_merge" >
+        <aura:set attribute="footer">
+            <aura:if isTrue="{!v.lstApplicant != null}">
+                <lightning:button variant="brand" label="Merge Applicants" title="Brand action" onclick="{!c.openMergeCmp}" />
+                <aura:set attribute="else">
+                    No duplicates found.
+                </aura:set>
+            </aura:if> 
+            
+        </aura:set>
+        <p class="slds-p-horizontal_small">
+            
+            <aura:iteration items="{!v.lstApplicant}" var="a">
+                <lightning:tile label="{!a.First_Name__c + '' + Last_Name__c}" href="{!'/one/one.app?#/sObject/'+ a.Id + '/view'}">
+                    <aura:set attribute="media">
+                        <lightning:icon iconName="custom:custom15" size="small"/>
+                    </aura:set>
+                    <dl class="slds-dl_horizontal">
+                        <dt class="slds-dl_horizontal__label">
+                            <p class="slds-truncate" title="Email">Email</p>
+                        </dt>
+                        <dd class="slds-dl_horizontal__detail slds-tile__meta">
+                            <p class="slds-truncate" title="{!a.Email__c}">{!a.Email__c}</p>
+                        </dd>
+                        <dt class="slds-dl_horizontal__label">
+                            <p class="slds-truncate" title="JazzHRID">JazzHR ID</p>
+                        </dt>
+                        <dd class="slds-dl_horizontal__detail slds-tile__meta">
+                            <p class="slds-truncate" title="{!a.JazzHR_Applicant_ID__c}">{!a.JazzHR_Applicant_ID__c}</p>
+                        </dd>
+                        
+                    </dl>
+                </lightning:tile> 
+            </aura:iteration>
+            
+        </p>
+    </lightning:card>
+    <aura:if isTrue="{!v.isOpen}">
+        
+        <!--###### MODAL BOX Start From Here ######--> 
+        <div role="dialog" tabindex="-1" aria-labelledby="header99" class="slds-modal slds-fade-in-open slds-modal_large">
+            <div class="slds-modal__container">
+                <!-- ###### MODAL BOX HEADER Part Start From Here ######-->
+                <div class="slds-modal__header">
+                    <lightning:buttonIcon iconName="utility:close"
+                                          onclick="{! c.closeModel }"
+                                          alternativeText="close"
+                                          variant="bare-inverse"
+                                          class="slds-modal__close"/>
+                    <h2 id="header99" class="slds-text-heading--medium">Merge Applicants</h2>
+                    <br/>
+                    
+                    <!--lightning progressIndicator start-->
+                    <lightning:progressIndicator type="path" currentStep="{!v.currentStep}" >
+                        <lightning:progressStep label="Choose Master Record" value="1" onclick="{!c.selectFromHeaderStep1}"/>
+                        <lightning:progressStep label="Confirmation" value="2" onclick="{!c.selectFromHeaderStep2}"/>
+                        <lightning:progressStep label="Completed" value="3" onclick="{!c.selectFromHeaderStep3}"/>
+                    </lightning:progressIndicator>
+                </div>
+                
+                <!--###### MODAL BOX BODY Part Start From Here ######-->
+                <div class="slds-modal__content slds-p-around_medium">
+                    <!--showing 3 screens based on progress indicator steps-->
+                    <div class="{!v.currentStep == '1' ? 'slds-show' : 'slds-hide'}" >
+                        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                            <tr>
+                                <th class="" scope="col"><div class="slds-truncate">Choose Record</div></th>
+                                <th>Applicant Name</th>
+                                <th>JazzHR ID</th>
+                                <th>Apply Date</th>
+                                <th>Total Applications</th>
+                                <th>Total Questionnaires</th>
+                                <!-- <th>Preview</th> -->
+                            </tr>
+                            <aura:iteration items="{!v.lstApplicantMatchingApplicant}" var="ap">
+                                <tr>
+                                    <td style="text-align:center;">
+                                        <ui:inputRadio text="{!ap.recordId}" value="{!ap.isSelected}" name="radioButton" change="{!c.onRadioButtonChange}" />
+                                    </td>
+                                    <td>{!ap.firstName} &nbsp; {!ap.lastName}</td>
+                                    <td>{!ap.jazzHRId}</td>
+                                    <td>
+                                    <aura:if isTrue="{!ap.applyDate!=null}">
+                                        <ui:outputDate value="{!ap.applyDate}" format="DD/MM/YYYY" />
+                                        <aura:set attribute="else">
+                                            --
+                                        </aura:set>
+                                    </aura:if>
+                                    </td>
+                                    <td> <lightning:badge label="{!ap.totalJobApplications}"/></td>
+                                    <td> <lightning:badge label="{!ap.totalQuestionnaire}"/></td>
+                                    <!-- <td> <lightning:buttonIcon iconName="utility:preview"  alternativeText="preview" onclick="{!c.previewRecords}"/></td> -->
+                                </tr>
+                            </aura:iteration>   
+                        </table>
+                        
+                    </div>
+                    <div class="{!v.currentStep == '2' ? 'slds-show' : 'slds-hide'}">
+                        
+                        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                            <thead>
+                                <tr> 
+                                    <Td colspan="4">
+                                        <ui:message title="Important Information" severity="info" closable="true">
+                                            Job Applicantions and Questionnaries for below Applicants will be merged to the selected Master Applicant and these Applicants will be <b>deleted</b> after merge.<br/>
+                                            Click Next to Continue or close this window to Cancel.
+                                            
+                                        </ui:message>
+                                    </Td>
+                                </tr>
+                                <tr>
+                                    <th>Applicant Name</th>
+                                    <th>JazzHR ID</th>
+                                    <th>Apply Date</th>
+                                    <th>Total Applications</th>
+                                    <th>Total Questionnaires</th>
+                                </tr>
+                                <aura:iteration items="{!v.lstApplicantMatchingApplicant}" var="ap">
+                                    <aura:if isTrue="{!ap.isSelected == false}">
+                                        <tr>
+                                            <td>{!ap.firstName} &nbsp; {!ap.lastName}</td>
+                                            <td>{!ap.jazzHRId}</td>
+                                            <td>
+                                                <aura:if isTrue="{!ap.applyDate!=null}">
+                                                    <ui:outputDate value="{!ap.applyDate}" format="DD/MM/YYYY" />
+                                                    <aura:set attribute="else">
+                                                        --
+                                                    </aura:set>
+                                                </aura:if>
+                                    </td>
+                                            <td> <lightning:badge label="{!ap.totalJobApplications}"/></td>
+                                            <td> <lightning:badge label="{!ap.totalQuestionnaire}"/></td>
+                                        </tr>
+                                    </aura:if>
+                                    
+                                </aura:iteration> 
+                            </thead>
+                        </table>
+                    </div>
+                    <div class="{!v.currentStep == '3' ? 'slds-show' : 'slds-hide'}" style="color:green" >
+                        
+                        <span style="color:green; text-align:center; margin-bottom:20px;">Merging in Progress Please Wait...Page will automatically redirect to Master Applicant</span>
+                        <lightning:progressBar value="{!v.progress}"/> 
+                        <span style="color:green;float:right;">{!v.progress} % Completed </span>
+                        
+                    </div>
+                </div>
+                <!--###### MODAL BOX FOOTER Part Start From Here ######-->
+                <div class="slds-modal__footer slds-modal__footer_directional">
+                    <lightning:button disabled="{!v.currentStep != '1' ? '' : 'disabled'}"
+                                      variant="neutral" 
+                                      label="Back"
+                                      title="Back"
+                                      onclick="{!c.moveBack}"/>
+                    <aura:if isTrue="{!v.currentStep != '3'}">
+                        <lightning:button variant="brand" 
+                                          disabled="{!v.isRecordSelected != false ? '' : 'disabled'}"
+                                          label="Next"
+                                          title="Next"
+                                          onclick="{!c.moveNext }"/>
+                    </aura:if>
+                    <aura:if isTrue="{!v.currentStep == '3'}"> 
+                        <lightning:button variant="brand" 
+                                          label="Finish"
+                                          title="Finish"
+                                          onclick="{! c.finish }"/>  
+                    </aura:if>
+                </div>
+            </div>
+        </div>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+        <!--###### MODAL BOX Part END Here ######-->
+    </aura:if>
+    
+    
+</aura:component>

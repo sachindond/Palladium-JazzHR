@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Api_Key__c</fullName>
+        <externalId>false</externalId>
+        <label>Api Key</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Base_Url__c</fullName>
+        <externalId>false</externalId>
+        <label>Base Url</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Batch_Run_Date__c</fullName>
+        <description>Use this field when admin needs to run daily batch for JazzHR for given date. If this value is blank in the custom setting, batches will run for YESTERDAY by default.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Use this field when admin needs to run daily batch for JazzHR for given date. If this value is blank in the custom setting, batches will run for YESTERDAY by default. Make sure to make this field blank after batch execution completes.</inlineHelpText>
+        <label>Batch Run Date (YYYY-MM-DD)</label>
+        <length>10</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Enable_Send_Email__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>If checked, Applicant Sync option to Send Email will be activated. If Unchecked, Send Email option will be disabled.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If checked, Applicant Sync option to Send Email will be activated. If Unchecked, Send Email option will be disabled.</inlineHelpText>
+        <label>Enable Send Email</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>JazzHR Setting</label>
+    <visibility>Public</visibility>
+</CustomObject>

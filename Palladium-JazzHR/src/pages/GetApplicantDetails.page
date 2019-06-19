@@ -1,0 +1,8 @@
+<apex:page standardController="Applicant__c" extensions="SyncApplicantFromJazzHRClassic" action="{!syncApplicantDetails}">
+    <apex:pageMessages />
+
+    <apex:form >
+        <apex:inputHidden value="{!Applicant__c.id}"/>
+        <apex:inputHidden value="{!Applicant__c.JazzHR_Applicant_ID__c}"/>
+    </apex:form>
+</apex:page>

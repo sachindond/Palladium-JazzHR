@@ -1,0 +1,37 @@
+<aura:component controller="GetApplicantDetailController"  
+                implements="force:lightningQuickActionWithoutHeader,force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" 
+                access="global" >
+    
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="recordId" type="Id"  access="global" />
+    <aura:attribute name="textColor" type="string" default="black"  access="global"/>
+    <aura:attribute name="isSpinnerClosed" type="boolean" default="true" access="global"/>
+    <aura:attribute name="showSendEmailDiv" type="boolean" default="false" access="global"/>
+     <aura:attribute name="applicantRecord" type="object" access="global"/>
+    <aura:if isTrue="{!v.isSpinnerClosed==true}">
+        <div class="demo-only" style="text-align:center;" >
+            <img src="{!$Resource.Loader + '/	'}" height="150" width="150"/><br></br>
+            <span style="font-size:20px;">Please Wait....</span>
+        </div>
+    </aura:if>
+    <aura:if isTrue="{!v.showSendEmailDiv==true}">
+        <div>
+            <table>
+                <tr >
+                    <td>
+                        <ui:message title="Important Information" severity="info" closable="false">
+                            Sync from JazzHR is successful. It looks like applicant is not yet registered via Talent Pool.
+                            Do you want to send a reminder email?
+                        </ui:message>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align:right;">
+                        <lightning:button variant="brand" label="Send Mail" onclick="{!c.sendEmailToApplicant}" /><lightning:button label="Cancel" onclick="{!c.onClickCancelButton}" /></td>
+                </tr>
+                
+            </table>
+        </div>
+    </aura:if>
+</aura:component>

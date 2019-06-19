@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Job_Application_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fieldSets>
+        <fullName>Job_Applicant_Field_Set_For_Lex_Cmp</fullName>
+        <description>This field set is used in JazzHR Applicant Journey Lightning Component</description>
+        <displayedFields>
+            <field>Name</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Job_Listing__r.Name</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Job_Listing__r.Title__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Applicant_Progress__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Outcome_Type__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Job_Start_Date__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Job_End_Date__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>Job Applicant Field Set For Lex Component</label>
+    </fieldSets>
+    <fieldSets>
+        <fullName>Job_Application_Field_Set</fullName>
+        <description>Used in Applicant Merge Functionality.</description>
+        <displayedFields>
+            <field>Applicant__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Applicant_Jazz_ID__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Applicant_Progress__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Average_Rating__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Date__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Hiring_Lead_Rating__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>JazzHR_Job_Application_ID__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>JazzHR_User__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Job_Jazz_ID__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Job_Listing__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Rating__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Workflow_Step_ID__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>Job Application Field Set</label>
+    </fieldSets>
+    <fields>
+        <fullName>Applicant_Jazz_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>Applicant Jazz ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Applicant_Progress__c</fullName>
+        <externalId>false</externalId>
+        <label>Applicant Progress</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Applicant__c</fullName>
+        <externalId>false</externalId>
+        <label>Applicant</label>
+        <referenceTo>Applicant__c</referenceTo>
+        <relationshipLabel>Job Applications</relationshipLabel>
+        <relationshipName>Job_Applications</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Average_Rating__c</fullName>
+        <externalId>false</externalId>
+        <label>Average Rating</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Hiring_Lead_Rating__c</fullName>
+        <externalId>false</externalId>
+        <label>Hiring Lead Rating</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>JazzHR_Job_Application_ID__c</fullName>
+        <externalId>true</externalId>
+        <label>JazzHR Job Application ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>JazzHR_User__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>JazzHR User</label>
+        <referenceTo>JazzHR_User__c</referenceTo>
+        <relationshipLabel>Job Applications</relationshipLabel>
+        <relationshipName>Job_Applications</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Job_End_Date__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter the job end date relating to this application</inlineHelpText>
+        <label>Job End Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Job_Jazz_ID__c</fullName>
+        <externalId>true</externalId>
+        <label>Job Jazz ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Job_Listing__c</fullName>
+        <externalId>false</externalId>
+        <label>Job Listing ID</label>
+        <referenceTo>Job_Listing__c</referenceTo>
+        <relationshipLabel>Job Applications</relationshipLabel>
+        <relationshipName>Job_Applications</relationshipName>
+        <relationshipOrder>1</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Job_Start_Date__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter the date the applicant started employment related to this application.</inlineHelpText>
+        <label>Job Start Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Last_Synced_At__c</fullName>
+        <externalId>false</externalId>
+        <label>Last Synced At</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Length_of_Employment__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(
+AND(NOT(ISBLANK(Job_Start_Date__c)), ISBLANK(Job_End_Date__c)), TODAY() - Job_Start_Date__c,
+IF(
+AND(NOT(ISBLANK(Job_Start_Date__c)), NOT(ISBLANK(Job_End_Date__c))),  Job_End_Date__c - Job_Start_Date__c, 0
+)
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Length of Employment Calculated in Days</inlineHelpText>
+        <label>Length of Employment</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Outcome_Type__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(
+AND(OR(Applicant_Progress__c = &quot;Lambeth Candidate&quot;,Applicant_Progress__c = &quot;Wandsworth Candidate&quot;,Applicant_Progress__c = &quot;Full Time&quot;,Applicant_Progress__c = &quot;Part Time&quot;,Applicant_Progress__c = &quot;Found Employment Elsewhere&quot;), NOT(ISBLANK(Job_Start_Date__c))), &quot;Job Start&quot;,
+IF(
+AND(OR(Applicant_Progress__c = &quot;Lambeth Candidate&quot;,Applicant_Progress__c = &quot;Wandsworth Candidate&quot;,Applicant_Progress__c = &quot;Full Time&quot;,Applicant_Progress__c = &quot;Part Time&quot;,Applicant_Progress__c = &quot;Found Employment Elsewhere&quot;), ISBLANK(Job_Start_Date__c)), &quot;Job Offer&quot;, Applicant_Progress__c
+)
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Outcome Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rating__c</fullName>
+        <externalId>false</externalId>
+        <label>Rating</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Reporting_Stage__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE( Workflow_Step_ID__c, 
+&quot;1&quot;,&quot;New&quot;,
+&quot;3262622&quot;,&quot;Engaged&quot;,
+&quot;3262623&quot;,&quot;Engaged&quot;,
+&quot;3839918&quot;,&quot;Engaged&quot;,
+&quot;3839919&quot;,&quot;Engaged&quot;,
+&quot;3585459&quot;,&quot;Engaged&quot;,
+&quot;3585461&quot;,&quot;Engaged&quot;,
+&quot;7778045&quot;,&quot;Engaged&quot;,
+&quot;7778046&quot;,&quot;Engaged&quot;,
+&quot;6585957&quot;,&quot;Engaged&quot;,
+&quot;6585958&quot;,&quot;Engaged&quot;,
+&quot;3408505&quot;,&quot;Engaged&quot;,
+&quot;3408506&quot;,&quot;Engaged&quot;,
+&quot;4238912&quot;,&quot;Engaged&quot;,
+&quot;4238913&quot;,&quot;Engaged&quot;,
+&quot;3447757&quot;,&quot;Engaged&quot;,
+&quot;3447758&quot;,&quot;Engaged&quot;,
+&quot;3262624&quot;,&quot;Interviewed&quot;,
+&quot;3262625&quot;,&quot;Interviewed&quot;,
+&quot;3262833&quot;,&quot;Interviewed&quot;,
+&quot;3262831&quot;,&quot;Interviewed&quot;,
+&quot;3262832&quot;,&quot;Interviewed&quot;,
+&quot;3262626&quot;,&quot;Interviewed&quot;,
+&quot;3262627&quot;,&quot;Interviewed&quot;,
+&quot;4149989&quot;,&quot;Interviewed&quot;,
+&quot;7778049&quot;,&quot;Interviewed&quot;,
+&quot;3262628&quot;,&quot;Interviewed&quot;,
+&quot;3839920&quot;,&quot;Interviewed&quot;,
+&quot;3839921&quot;,&quot;Interviewed&quot;,
+&quot;3839922&quot;,&quot;Interviewed&quot;,
+&quot;3839923&quot;,&quot;Interviewed&quot;,
+&quot;3839924&quot;,&quot;Interviewed&quot;,
+&quot;3585460&quot;,&quot;Interviewed&quot;,
+&quot;3585462&quot;,&quot;Interviewed&quot;,
+&quot;7490927&quot;,&quot;Interviewed&quot;,
+&quot;3585463&quot;,&quot;Interviewed&quot;,
+&quot;3585464&quot;,&quot;Interviewed&quot;,
+&quot;7490928&quot;,&quot;Interviewed&quot;,
+&quot;3585465&quot;,&quot;Interviewed&quot;,
+&quot;7778047&quot;,&quot;Interviewed&quot;,
+&quot;7778048&quot;,&quot;Interviewed&quot;,
+&quot;7778050&quot;,&quot;Interviewed&quot;,
+&quot;7778049&quot;,&quot;Interviewed&quot;,
+&quot;7778051&quot;,&quot;Interviewed&quot;,
+&quot;6585960&quot;,&quot;Interviewed&quot;,
+&quot;6585961&quot;,&quot;Interviewed&quot;,
+&quot;6585962&quot;,&quot;Interviewed&quot;,
+&quot;6585963&quot;,&quot;Interviewed&quot;,
+&quot;3408507&quot;,&quot;Interviewed&quot;,
+&quot;3408508&quot;,&quot;Interviewed&quot;,
+&quot;3408509&quot;,&quot;Interviewed&quot;,
+&quot;3408510&quot;,&quot;Interviewed&quot;,
+&quot;3408511&quot;,&quot;Interviewed&quot;,
+&quot;4238915&quot;,&quot;Interviewed&quot;,
+&quot;4238916&quot;,&quot;Interviewed&quot;,
+&quot;4238917&quot;,&quot;Interviewed&quot;,
+&quot;4238918&quot;,&quot;Interviewed&quot;,
+&quot;7778067&quot;,&quot;Interviewed&quot;,
+&quot;3447759&quot;,&quot;Interviewed&quot;,
+&quot;3447760&quot;,&quot;Interviewed&quot;,
+&quot;3545180&quot;,&quot;Interviewed&quot;,
+&quot;3447761&quot;,&quot;Interviewed&quot;,
+&quot;3447762&quot;,&quot;Interviewed&quot;,
+&quot;3447763&quot;,&quot;Interviewed&quot;,
+&quot;7778067&quot;,&quot;Interviewed&quot;,Applicant_Progress__c 
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Reporting Stage</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Workflow_Step_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>Workflow Step ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Job Application</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Applicant__c</columns>
+        <columns>Applicant_Progress__c</columns>
+        <columns>Job_Listing__c</columns>
+        <columns>Workflow_Step_ID__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>Full_Time</fullName>
+        <columns>NAME</columns>
+        <columns>Applicant__c</columns>
+        <columns>Applicant_Progress__c</columns>
+        <columns>Job_Listing__c</columns>
+        <columns>Workflow_Step_ID__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Workflow_Step_ID__c</field>
+            <operation>equals</operation>
+            <value>3408509</value>
+        </filters>
+        <label>Full Time</label>
+        <language>en_US</language>
+    </listViews>
+    <nameField>
+        <displayFormat>JA-{000000}</displayFormat>
+        <label>Job Application ID</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Job Applications</pluralLabel>
+    <searchLayouts>
+        <searchResultsAdditionalFields>Applicant__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Job_Listing__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>JazzHR_User__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>JazzHR_Job_Application_ID__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Job_End_Date</fullName>
+        <active>false</active>
+        <description>Job end date can only be entered if a job start date is present</description>
+        <errorConditionFormula>ISBLANK(Job_Start_Date__c)</errorConditionFormula>
+        <errorMessage>Job end date can only be entered if a job start date is present</errorMessage>
+    </validationRules>
+</CustomObject>

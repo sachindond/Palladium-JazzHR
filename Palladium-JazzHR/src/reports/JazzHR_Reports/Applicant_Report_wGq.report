@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>Applicant__c.First_Name__c</field>
+    </columns>
+    <columns>
+        <field>Applicant__c.Last_Name__c</field>
+    </columns>
+    <columns>
+        <field>Applicant__c.Email__c</field>
+    </columns>
+    <columns>
+        <field>Applicant__c.Phone__c</field>
+    </columns>
+    <columns>
+        <field>Applicant__c.Apply_Date__c</field>
+    </columns>
+    <currency>GBP</currency>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Applicant__c.Type__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Applicant Report</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Applicant__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Applicant__c.Apply_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

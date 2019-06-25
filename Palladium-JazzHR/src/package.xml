@@ -25,6 +25,8 @@
 		<members>Logger</members>
 		<members>SyncApplicantFromJazzHRClassic</members>
 		<members>JazzHRFetchDeletedApplicantController</members>
+		<members>BatchDeleteJobApplications</members>
+<members>ScheduleBatchDeleteJobApplications</members>
 		<members>TestBatchSyncApplicantCompleteDetails</members>
 		<members>TestBatchDeleteJobApplications</members>
 		<members>TestScheduleBatchDeleteJobApplications</members>
@@ -36,6 +38,9 @@
 		<members>TestJazzHRMergeApplicantController</members>
 		<members>TestScheduleJazzHRBatches</members>
 		<members>TestSyncApplicantFromJazzHRClassic</members>
+		<members>TestScheduleBatchDeleteJobApplications</members>
+<members>TestBatchDeleteJobApplications</members>
+
 		<name>ApexClass</name>
 	</types>
 	<types>

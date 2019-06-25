@@ -4,6 +4,7 @@
 global class ScheduleBatchUpdateJazzHRJobApplication implements Schedulable{
     global void execute(SchedulableContext schedulableConObj){
         BatchUpdateJazzHRJobApplication bcObject = new BatchUpdateJazzHRJobApplication();
-        database.executeBatch(bcObject,20);
+        database.executeBatch(bcObject,10);
+        
     }
 }

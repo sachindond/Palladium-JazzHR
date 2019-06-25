@@ -12,6 +12,7 @@ global class BatchUpdateJazzHRJobApplication implements Database.Batchable<sObje
             system.debug('*** List Of Job Listing ***'+scope.size());
             //step 1. Get Job Applications for each job
             for(Job_Listing__c jobListingObj : scope){
+              
                 List<List<JazzHRWrapper.JobApplicatonWrapper>> currentJobApplicationList = 
                     	JazzHRCallouts.getJobApplicationByJobId(jobListingObj.JazzHR_Job_ID__c);
                 if(currentJobApplicationList != null)
